@@ -6,9 +6,9 @@ import chat1Mockup from "./../assets/mockup/Chat-1.webp";
 import chat2Mockup from "./../assets/mockup/Chat-2-cropped.webp";
 import villaPhoto from "./../assets/mockup/villa hero section.webp";
 import cardVillaMockup from "./../assets/mockup/villa card hero section.webp";
-import Image from "next/image";
-import { useRouter } from 'next/navigation'
-import { Badge, PageHeader, Footer, Button, TestimonialCard } from "@/app/components";
+
+import { useNavigate } from '@tanstack/react-router'
+import { Badge, PageHeader, Footer, Button, TestimonialCard } from "../components";
 
 export function Home() {
     return (
@@ -27,12 +27,11 @@ export function Home() {
 
                         <section className="mockup">
 
-                            <Image src={villaPhoto} 
+                            <img src={villaPhoto} 
                                  alt="villa photo"
                                  loading="lazy" />
-                               
 
-                            <Image src={cardVillaMockup} 
+                            <img src={cardVillaMockup} 
                                  alt="card villa mockup"
                                  loading="lazy"
                                  className="card-photo" />
@@ -79,12 +78,12 @@ function ReservationScheduleFeature() {
 
             <section className="mockup app-mockup">
 
-                <Image src={reservationSchedule1Mockup} 
+                <img src={reservationSchedule1Mockup} 
                      alt="reservation Schedule 1"
                      loading="lazy"
                      className="main-mockup" />
 
-                <Image src={reservationSchedule2Mockup} 
+                <img src={reservationSchedule2Mockup} 
                      alt="reservation Schedule 1"
                      loading="lazy"
                      className="floating-mockup" />
@@ -118,12 +117,12 @@ function VillaManagementFeature() {
 
             <section className="mockup app-mockup">
 
-                <Image src={villaManagement1Mockup} 
+                <img src={villaManagement1Mockup} 
                      alt="reservation Schedule 1"
                      loading="lazy"
                      className="main-mockup" />
 
-                <Image src={villaManagement2Mockup} 
+                <img src={villaManagement2Mockup} 
                      alt="reservation Schedule 1"
                      loading="lazy"
                      className="floating-mockup" />
@@ -156,12 +155,12 @@ function ChatFeature() {
 
             <section className="mockup app-mockup">
 
-                <Image src={chat1Mockup} 
+                <img src={chat1Mockup} 
                      alt="reservation Schedule 1"
                      loading="lazy"
                      className="main-mockup" />
 
-                <Image src={chat2Mockup} 
+                <img src={chat2Mockup} 
                      alt="reservation Schedule 1"
                      loading="lazy"
                      className="floating-mockup" />
@@ -277,7 +276,8 @@ function Testimony() {
 }
 
 function CTA() {
-  const router = useRouter()
+    const navigate = useNavigate();
+
     return (
         <section className="cta">
             <h2 className="h2-medium headline">Ayo Buat Akun di Sewa Asri</h2>
@@ -290,7 +290,7 @@ function CTA() {
                     label="Buat Akun"
 
                     onClickHandler={() => {
-                      router.push('/register')
+                        navigate({ to: "/register" });
                     }}
             />
         </section>
