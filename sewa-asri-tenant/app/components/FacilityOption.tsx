@@ -29,6 +29,7 @@ import garageIcon from "./../assets/icons/garage.webp";
 import securityIcon from "./../assets/icons/security.webp";
 import parkIcon from "./../assets/icons/park.webp";
 import bbqIcon from "./../assets/icons/bbq.webp";
+import Image from "next/image";
 
 interface FacilityOptionProps {
     name: string;
@@ -56,7 +57,7 @@ export function FacilityOption({ name, variant, status, currentValue, onChangeFa
             
             {
                 name === "Single bed" || name === "Double bed" ? (
-                    <img    className="facility-icon"
+                    <Image  className="facility-icon" alt="facility-icon"
                             src={name === "Single bed" ? singleBedIcon : doubleBedIcon} />
                 ) : (
                     <FacilityIcon name={name} />
@@ -67,7 +68,7 @@ export function FacilityOption({ name, variant, status, currentValue, onChangeFa
                 { name }
             </h4>
 
-            { (status === "available" && variant === "selectable" ) && <img className="check-icon" src={checkIcon} /> }
+            { (status === "available" && variant === "selectable" ) && <Image className="check-icon" alt="check-icon" src={checkIcon} /> }
         </article>
     );
 }
@@ -85,7 +86,7 @@ export function FacilitySpecification({ name, value }: FacilitySpecificationProp
 }
 
 function FacilityIcon({ name }: { name: string }) {
-    const iconMap = {
+    const iconMap :any = {
         "Jendela": windowIcon,
         "Lemari pakaian": wardrobeIcon,
         "Stop kontak": socketIcon,
@@ -111,9 +112,9 @@ function FacilityIcon({ name }: { name: string }) {
 }
 
 function FacilitySpecificationIcon({ name }: { name: string }) {
-    const iconMap = {
+    const iconMap :any = {
         "Luas kamar": move3dIcon
     };
     
     return <img className="facility-icon" src={iconMap[name]} alt={name} />;
-}
+}   

@@ -13,14 +13,15 @@ import villaPhoto_2 from "./../../assets/images/image 2.png"
 import villaPhoto_3 from "./../../assets/images/image 3.png"
 import villaPhoto_4 from "./../../assets/images/image 4.png"
 
-import { useNavigate } from "@tanstack/react-router";
+import { useRouter } from 'next/navigation'
 import { useLogin } from "../../hooks/useAuth";
 import { setUser } from '../../utils/userStore';
+import Image from 'next/image';
 
 const cookies = new Cookies("auth-token", { path: '/' });
 
 export function Login() {
-    const navigate = useNavigate();
+    const router =useRouter()
     
     const emailRef = useRef("");
     const passwordRef = useRef("");
@@ -32,14 +33,13 @@ export function Login() {
         name: ""
     });
 
-
     console.info("Re-render Login.tsx");
 
     function onLogin() {
         if (emailRef.current.length > 0 && passwordRef.current.length > 0) {
             
             login({ email: emailRef.current, password: passwordRef.current })
-            .then((response) => {
+            .then((response :any )  => {
                 const { id, name, photo, role } = response?.data?.user;
 
                 if (response?.status === "Success") {
@@ -62,7 +62,7 @@ export function Login() {
                                 photo: photo
                             });
                             
-                            navigate({ to: `/dashboard` });
+                            router.push('/dashboard')
                             break;
                     }
                 }
@@ -103,10 +103,10 @@ export function Login() {
                     </h1>
 
                     <article  className="image-gallery" >
-                        <img className="image" src={villaPhoto_1} />
-                        <img className="image" src={villaPhoto_2} />
-                        <img className="image" src={villaPhoto_3} />
-                        <img className="image" src={villaPhoto_4} />
+                        <Image className="image" src={villaPhoto_1} alt='image'/>
+                        <Image className="image" src={villaPhoto_2} alt='image'/>
+                        <Image className="image" src={villaPhoto_3} alt='image'/>
+                        <Image className="image" src={villaPhoto_4} alt='image'/>
                     </article>
                 </section>
 
@@ -114,7 +114,7 @@ export function Login() {
 
                     <header className="content">
 
-                        <img src={logo} className="logo" />
+                        <Image src={logo} className="logo" alt='logo'/>
 
                         <article className="detail">
 
@@ -170,7 +170,7 @@ export function Login() {
                                     state="active"
                         
                                     onClickHandler={() => {
-                                        navigate({ to: "/register" });
+                                        router.push('/register')
                                     }}
                                     />
                     </section>

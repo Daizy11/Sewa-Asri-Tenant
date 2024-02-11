@@ -1,6 +1,7 @@
 import typescriptIcon from "./../assets/typescript-plain.webp";
 import avatarJulian from "./../assets/Avatar-Julian.webp";
 import avatarHabib from "./../assets/Avatar-Habib.webp";
+import Image from "next/image";
 
 export function MockupCodeEditor({ variant }: { variant: string }) {
     const linesOfCode = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -11,7 +12,7 @@ export function MockupCodeEditor({ variant }: { variant: string }) {
 
                 <header className="header-directory">
 
-                    <img src={typescriptIcon} className="logo"/>
+                    <Image src={typescriptIcon} className="logo" alt="logo ,j r,h.k"/>
 
                     <p className="label-regular path">
                         { variant === "client" ? "client/src/page/Home.tsx" : "backend/src/app.js" }
@@ -52,7 +53,7 @@ export function MockupCodeEditor({ variant }: { variant: string }) {
 }
 
 function Code({ variant }: { variant: string; }) {
-    const codeMap = {
+    const codeMap : any  = {
         client: <code className="code">
                     <span>
                         <p><span style={{color: "#BF40AB"}}>export function </span><span style={{color: "#3B7EFF"}}>{`Home() {`}</span></p>
@@ -148,7 +149,7 @@ function Code({ variant }: { variant: string; }) {
 }
 
 function Team({ name, role, variant }: { name: string; role: string; variant: string; }) {
-    const avatarMap = {
+    const avatarMap : any = {
         "Achmad Julian": avatarJulian,
         "M Habib Erdian": avatarHabib
     };

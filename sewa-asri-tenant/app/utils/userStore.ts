@@ -1,3 +1,5 @@
+'use client'
+
 interface User {
     id: string;
     name: string;
@@ -9,7 +11,7 @@ function setUser(user: User) {
 }
 
 function getUser() {
-    const user = localStorage.getItem("user-store");
+    const user = typeof window !== "undefined" ? localStorage.getItem("user-store") : false ;
 
     if (user) {
         const result: User = JSON.parse(user);

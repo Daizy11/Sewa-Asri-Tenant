@@ -7,34 +7,37 @@ import chat2Mockup from "./../assets/mockup/Chat-2-cropped.webp";
 import villaPhoto from "./../assets/mockup/villa hero section.webp";
 import cardVillaMockup from "./../assets/mockup/villa card hero section.webp";
 
-import { useNavigate } from '@tanstack/react-router'
-import { Badge, PageHeader, Footer, Button, TestimonialCard } from "../components";
+import { useRouter } from 'next/navigation'
 
+import { Badge, PageHeader, Footer, Button, TestimonialCard } from "../components";
+import Image from "next/image";
+import { revalidateTag } from "next/cache";
 export function Home() {
     return (
         <>
-            <PageHeader />
-            <main className="page-container">
-                <section className="container">
+            {/* <PageHeader /> */}
+            <main className="pt-50 h-full w-full overflow-y-scroll grid grid-rows-gap">
+                <section className="pt-50 px-48 flex flex-col gap-y-100">
 
-                    <section className="hero-section">
+                    <section className="flex flex-row w-1340 h-400 justify-center items-center gap-50 flex-shrink-0">
 
-                        <article className="header-description-wrapper">
-                            <h1 className="h1-medium">
-                                Kelola Jadwal Reservasi dan Villa Dengan <span className="highlight">Sewa Asri Tenant</span>
+                        <article className="w-full max-w-[650px] flex flex-col gap-6">
+                            <h1 className="text-5xl text-[#0000]">
+                                Kelola Jadwal Reservasi dan Villa Dengan
+                                <span className="highlight">Sewa Asri Tenant</span>
                             </h1>
                         </article>
 
                         <section className="mockup">
 
-                            <img src={villaPhoto} 
-                                 alt="villa photo"
-                                 loading="lazy" />
+                            <Image src={villaPhoto}
+                                alt="villa photo"
+                                loading="lazy" />
 
-                            <img src={cardVillaMockup} 
-                                 alt="card villa mockup"
-                                 loading="lazy"
-                                 className="card-photo" />
+                            <Image src={cardVillaMockup}
+                                alt="card villa mockup"
+                                loading="lazy"
+                                className="card-photo" />
                         </section>
                     </section>
 
@@ -44,7 +47,7 @@ export function Home() {
                     <CTA />
 
                 </section>
-            <Footer />
+                <Footer />
             </main>
         </>
     );
@@ -78,15 +81,15 @@ function ReservationScheduleFeature() {
 
             <section className="mockup app-mockup">
 
-                <img src={reservationSchedule1Mockup} 
-                     alt="reservation Schedule 1"
-                     loading="lazy"
-                     className="main-mockup" />
+                <Image src={reservationSchedule1Mockup}
+                    alt="reservation Schedule 1"
+                    loading="lazy"
+                    className="main-mockup" />
 
-                <img src={reservationSchedule2Mockup} 
-                     alt="reservation Schedule 1"
-                     loading="lazy"
-                     className="floating-mockup" />
+                <Image src={reservationSchedule2Mockup}
+                    alt="reservation Schedule 1"
+                    loading="lazy"
+                    className="floating-mockup" />
             </section>
 
             <section className="content">
@@ -117,15 +120,15 @@ function VillaManagementFeature() {
 
             <section className="mockup app-mockup">
 
-                <img src={villaManagement1Mockup} 
-                     alt="reservation Schedule 1"
-                     loading="lazy"
-                     className="main-mockup" />
+                <Image src={villaManagement1Mockup}
+                    alt="reservation Schedule 1"
+                    loading="lazy"
+                    className="main-mockup" />
 
-                <img src={villaManagement2Mockup} 
-                     alt="reservation Schedule 1"
-                     loading="lazy"
-                     className="floating-mockup" />
+                <Image src={villaManagement2Mockup}
+                    alt="reservation Schedule 1"
+                    loading="lazy"
+                    className="floating-mockup" />
             </section>
 
             <section className="content">
@@ -155,15 +158,15 @@ function ChatFeature() {
 
             <section className="mockup app-mockup">
 
-                <img src={chat1Mockup} 
-                     alt="reservation Schedule 1"
-                     loading="lazy"
-                     className="main-mockup" />
+                <Image src={chat1Mockup}
+                    alt="reservation Schedule 1"
+                    loading="lazy"
+                    className="main-mockup" />
 
-                <img src={chat2Mockup} 
-                     alt="reservation Schedule 1"
-                     loading="lazy"
-                     className="floating-mockup" />
+                <Image src={chat2Mockup}
+                    alt="reservation Schedule 1"
+                    loading="lazy"
+                    className="floating-mockup" />
             </section>
 
             <section className="content">
@@ -276,22 +279,23 @@ function Testimony() {
 }
 
 function CTA() {
-    const navigate = useNavigate();
+    const router = useRouter()
+
 
     return (
         <section className="cta">
             <h2 className="h2-medium headline">Ayo Buat Akun di Sewa Asri</h2>
             <p className="p-regular supporting-headline">Kelola booking secara otomatis, berkomunikasi dengan calon <br /> tamu, memperbarui harga villa, melihat riwayat booking</p>
-            
-            <Button variant="primary"
-                    behavior="hug-content"
-                    size="large"
-                    state="active"
-                    label="Buat Akun"
 
-                    onClickHandler={() => {
-                        navigate({ to: "/register" });
-                    }}
+            <Button variant="primary"
+                behavior="hug-content"
+                size="large"
+                state="active"
+                label="Buat Akun"
+
+                onClickHandler={() => {
+                    router.push('/register')
+                }}
             />
         </section>
     )

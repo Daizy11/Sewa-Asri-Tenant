@@ -9,6 +9,7 @@ import messageIcon from "./../assets/icons/messages-2-1.webp";
 import profileUserIcon from "./../assets/icons/profile-2user.webp";
 import smsNotificationIcon from "./../assets/icons/sms-notification.webp";
 import villaIcon from "./../assets/icons/house.webp";
+import Image from "next/image";
 
 export function Badge({ label }: { label: string }) {
     return (
@@ -23,7 +24,7 @@ export function Badge({ label }: { label: string }) {
 }
 
 function BadgeIcon({ label }: { label: string }) {
-    const badgeIconMap = {
+    const badgeIconMap : any= {
         "Beragam metode pembayaran": cardIcon,
         "Unduh tiket": ticketIcon,
         "Kelola jadwal reservasi": menuBoardIcon,
@@ -38,5 +39,5 @@ function BadgeIcon({ label }: { label: string }) {
         "Notifikasi chat terbaru": smsNotificationIcon,
         "Mencari villa": villaIcon
     }
-    return <img src={badgeIconMap[label]} className="icon" />;
+    return <Image src={badgeIconMap[label]} className="icon" alt="icon"/>;
 }

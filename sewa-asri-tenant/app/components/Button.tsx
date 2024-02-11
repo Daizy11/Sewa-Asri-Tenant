@@ -1,4 +1,5 @@
-import spinner from "./../assets/icons/spinner.png";
+import Image from "next/image";
+import spinner from "@/app/assets/icons/spinner.png";
 
 type ButtonProps = {
     size: "small" | "medium" | "large";
@@ -11,16 +12,16 @@ type ButtonProps = {
     isLoading?: boolean;
 }
 
-export function Button({ 
-            behavior = "hug-content",
-            size, 
-            state, 
-            variant, 
-            label, 
-            onClickHandler,
-            isLoading = false
-        }:ButtonProps) { 
-    
+export function Button({
+    behavior = "hug-content",
+    size,
+    state,
+    variant,
+    label,
+    onClickHandler,
+    isLoading = false
+}: ButtonProps) {
+
     let buttonVariant;
 
     if (state === "active") {
@@ -30,20 +31,19 @@ export function Button({
     }
 
     return (
-        <button    onClick={() => {
-                    if ((onClickHandler && state === "active") && !isLoading) {
-                        onClickHandler();
-                    }
-                }}
-                
-                className={`button button-size-${size} button-${buttonVariant} button-behavior-${behavior} label-medium`}>
-                
-                <p>
-                    { label }
-                </p>
-                
-                <img    src={spinner}
-                        className={`spinner spinner-loading-${isLoading}`} />
+        <button onClick={() => {
+            if ((onClickHandler && state === "active") && !isLoading) {
+                onClickHandler();
+            }
+        }}
+            className={`button button-size-${size} button-${buttonVariant} button-behavior-${behavior} label-medium`}>
+
+            <p>
+                {label}
+            </p>
+
+            <Image src={spinner} alt="spinner"
+                className={`spinner spinner-loading-${isLoading}`} />
 
         </button>
     );

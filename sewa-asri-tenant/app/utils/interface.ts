@@ -54,7 +54,7 @@ interface IOutdoorFacility {
     bbqArea: "available" | "not available";
 }
 
-export {
+export type{
     Message,
     ParamListBase,
     PasswordRef,

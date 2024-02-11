@@ -31,7 +31,7 @@ export function WidgetHeader({ variant, onSearchHandler, onCreateVillaHandler }:
             }}
         />
     }
-    return headerVariantMap[variant];
+    // return headerVariantMap[variant];
 
 }
 
